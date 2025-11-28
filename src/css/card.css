@@ -1,0 +1,53 @@
+.package-card {
+    background-color: var(--card-bg);
+    border: 1px solid var(--primary-color);
+    border-radius: 15px;
+    padding: 1.5rem;
+    margin: 1rem;
+    width: 300px;
+    box-shadow: 0 0 20px var(--card-shadow);
+    transition: transform 0.3s, box-shadow 0.3s;
+    cursor: pointer;
+}
+
+.package-card:hover {
+    transform: translateY(-5px) scale(1.03);
+    box-shadow: 0 0 30px var(--primary-color);
+}
+
+.package-card h2 {
+    margin-top: 0;
+    color: var(--primary-color);
+}
+
+.package-card p {
+    color: var(--text-color);
+}
+
+.package-card a {
+    color: var(--secondary-color);
+    text-decoration: none;
+    font-weight: bold;
+}
+
+.package-card a:hover {
+    color: cyan;
+}
+
+.install-btn {
+    margin-top: 1rem;
+    padding: 0.5rem 1rem;
+    border-radius: 999px;
+    border: none;
+    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
+    color: #fff;
+    font-weight: bold;
+    cursor: pointer;
+    box-shadow: 0 0 15px var(--primary-color);
+    transition: all 0.3s ease;
+}
+
+.install-btn:hover {
+    transform: scale(1.05);
+    box-shadow: 0 0 25px var(--secondary-color);
+}

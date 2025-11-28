@@ -1,0 +1,107 @@
+:root {
+    --primary-color: #00ffea;
+    /* neon cyan */
+    --secondary-color: #ff00ff;
+    /* neon magenta / vibrant */
+    --bg-color: #0d0d0d;
+    /* dark background */
+    --text-color: #e0e0e0;
+    --card-bg: #1a1a1a;
+    --card-shadow: rgba(0, 255, 234, 0.2);
+    --header-gradient: linear-gradient(90deg, #00ffea, #ff00ff);
+    /* cyan → magenta */
+}
+
+[data-theme="light"] {
+    --primary-color: #00bcd4;
+    /* soft cyan */
+    --secondary-color: #d500f9;
+    /* vibrant purple */
+    --bg-color: #f4f4f8;
+    --text-color: #1a1a1a;
+    --card-bg: #ffffff;
+    --card-shadow: rgba(0, 188, 212, 0.2);
+    --header-gradient: linear-gradient(90deg, #00bcd4, #d500f9);
+    /* cyan → purple */
+}
+
+[data-theme="dark"] {
+    --primary-color: #00ffea;
+    /* neon cyan */
+    --secondary-color: #ff00ff;
+    /* neon magenta / vibrant */
+    --bg-color: #0d0d0d;
+    /* dark background */
+    --text-color: #e0e0e0;
+    --card-bg: #1a1a1a;
+    --card-shadow: rgba(0, 255, 234, 0.2);
+    --header-gradient: linear-gradient(90deg, #00ffea, #ff00ff);
+    /* cyan → magenta */
+}
+
+* {
+    box-sizing: border-box;
+    transition: all 0.3s ease-in-out;
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: cyan;
+}
+
+body {
+    font-family: 'Orbitron', sans-serif;
+    /* sci-fi font */
+    background-color: var(--bg-color);
+    color: var(--text-color);
+    margin: 0;
+    padding: 0;
+}
+
+header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 1rem;
+    background: var(--header-gradient);
+    color: white;
+    text-shadow: 0 0 10px var(--primary-color);
+    border-radius: 0.5rem;
+}
+
+header h1 {
+    font-size: 1.5rem;
+}
+
+#search-bar {
+    padding: 0.7rem 1rem;
+    border-radius: 999px;
+    border: none;
+    width: 250px;
+    background: rgba(255, 255, 255, 0.1);
+    color: var(--text-color);
+    outline: none;
+    box-shadow: 0 0 15px rgba(0, 255, 234, 0.2);
+}
+
+#search-bar::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+main {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 2rem;
+}
+
+footer {
+    text-align: center;
+    padding: 2rem;
+    font-size: 0.9rem;
+    color: var(--text-color);
+    text-shadow: 0 0 5px var(--primary-color);
+}

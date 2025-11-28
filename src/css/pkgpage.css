@@ -1,0 +1,64 @@
+.package-header {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 1.5rem;
+    border-radius: 1rem;
+    background-color: var(--card-bg);
+    box-shadow: 0 0 25px var(--card-shadow);
+    text-align: left;
+}
+
+#readme-content {
+    max-width: 800px;
+    margin: 2rem auto;
+    padding: 2rem;
+    background-color: var(--card-bg);
+    border-radius: 1rem;
+    box-shadow: 0 0 20px var(--card-shadow);
+}
+
+#readme-content h1,
+#readme-content h2,
+#readme-content h3 {
+    color: var(--primary-color);
+}
+
+#readme-content code {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.2rem 0.4rem;
+    border-radius: 4px;
+    font-family: monospace;
+}
+
+.dependency-list {
+    list-style: none;
+    /* Remove default bullets */
+    padding-left: 0;
+    margin: 0.5rem 0;
+}
+
+.dependency-item {
+    padding-left: 1.5rem;
+    /* Indent to create "tab" effect */
+    position: relative;
+    margin-bottom: 0.3rem;
+    font-family: 'Orbitron', sans-serif;
+    font-size: 0.95rem;
+    color: var(--text-color);
+}
+
+.dependency-item::before {
+    content: '▸';
+    /* small arrow or tab icon */
+    position: absolute;
+    left: 0;
+    color: var(--primary-color);
+}
+
+a {
+    text-decoration: none;
+}
+
+a:hover {
+    color: cyan;
+}
