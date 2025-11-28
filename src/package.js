@@ -36,6 +36,14 @@ function renderPackage(pkg) {
         ? pkg.dependencies.map(dep => `<li class="dependency-item">→ ${dep}</li>`).join('')
         : '<li class="dependency-item">None</li>';
 
+    const os = pkg.os.length
+        ? pkg.os.map(dep => `<li class="os-item">→ ${dep}</li>`).join('')
+        : '<li class="os-item">None</li>';
+
+    const arch = pkg.arch.length
+        ? pkg.arch.map(dep => `<li class="arch-item">→ ${dep}</li>`).join('')
+        : '<li class="arch-item">None</li>';
+
     container.innerHTML = `
         <div class="package-header">
             <h2>${pkg.name}</h2>
@@ -44,6 +52,14 @@ function renderPackage(pkg) {
             <p>Dependencies:</p>
             <ul class="dependency-list">
                 ${deps}
+            </ul>
+            <p>Supported OSes:</p>
+            <ul class="os-list">
+                ${os}
+            </ul>
+            <p>Supported Architectures:</p>
+            <ul class="arch-list">
+                ${arch}
             </ul>
             <hr>
             <a href="${pkg.git_url}" target="_blank" style="color: white;">Git Repository</a>

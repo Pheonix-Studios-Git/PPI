@@ -1,22 +1,38 @@
 import { PackageCard } from "/src/components/PackageCard.js";
 
-function renderPackages(packages) {
-    const container = document.getElementById("package-list");
-    container.innerHTML = "";
+// Fetch JSON and render packages
+async function loadPackages() {
+  try {
+    const res = await fetch('/packages/packages.json');
+    const packages = await res.json();
 
-    packages.forEach(pkg => {
-        const card = PackageCard(pkg);
-        container.appendChild(card);
-    });
+    // For each package, fetch the README file
+    for (const pkg of packages) {
+      try {
+        const readmeRes = await fetch(`/data/${pkg.readme}`);
+        pkg.readmeContent = await readmeRes.text(); // store README content
+      } catch (err) {
+        console.error(`Failed to load README for ${pkg.name}:`, err);
+        pkg.readmeContent = "README not available.";
+      }
+    }
+
+    renderPackages(packages);
+  } catch (err) {
+    console.error('Failed to load packages.json:', err);
+  }
 }
 
-const inbuilt_packages = [
-    {
-        name: 'nfx',
-        version: '0.1.0',
-        description: 'Nova Pheonix Package Manager',
-        git_url: 'https://github.com/Pheonix-Studios-Git/NFX'
-    }
-];
+// Render packages to the page
+function renderPackages(packages) {
+  const container = document.getElementById("package-list");
+  container.innerHTML = "";
 
-renderPackages(inbuilt_packages);
+  packages.forEach(pkg => {
+    const card = PackageCard(pkg); // PackageCard can now display data
+    container.appendChild(card);
+  });
+}
+
+// Initialize
+loadPackages();
