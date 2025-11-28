@@ -15,7 +15,7 @@ async function loadPackages() {
             package_object.readmeContent = "README not available.";
         } else {
             try {
-                const readmeRes = await fetch(`/data/${package_object.readme}`);
+                const readmeRes = await fetch(`../data/${package_object.readme}`);
                 package_object.readmeContent = await readmeRes.text(); // store README content
             } catch (err) {
                 console.error(`Failed to load README for ${package_object.name}:`, err);
