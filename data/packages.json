@@ -1,19 +1,28 @@
-[
-  {
-    "name": "nfx",
-    "version": "0.1.0",
-    "git_url": "https://github.com/Pheonix-Studios-Git/NFX",
-    "dependencies": [],
-    "readme": "nfx_readme.md",
-    "os": ["linux", "windows", "macos"],
-    "arch": ["x86_64"]
-  },
-  {
-    "name": "PAC",
-    "version": "0.1.0",
-    "git_url": "https://github.com/AkshuDev/PAC",
-    "dependencies": [],
-    "os": ["linux"],
-    "arch": ["x86_64"]
-  }
-]
+{
+    "packages": [
+        {
+            "name": "nfx",
+            "version": "0.1.0",
+            "git_url": "https://github.com/Pheonix-Studios-Git/NFX",
+            "dependencies": [],
+            "readme": "NFX/README.md",
+            "os": ["linux", "windows", "macos"],
+            "arch": ["x86_64"],
+            "description": "Nova Package Manager",
+            "author": "Pheonix Studios (AkshuDev)",
+            "install": "nfx install:nfx"
+        },
+        {
+            "name": "PAC",
+            "version": "0.1.0",
+            "git_url": "https://github.com/AkshuDev/PAC",
+            "dependencies": [],
+            "os": ["linux"],
+            "arch": ["x86_64"],
+            "description": "Pheonix Assembler Collection",
+            "author": "Pheonix Studios (AkshuDev)",
+            "readme": "PAC/README.md",
+            "install": "nfx install:PAC"
+        }
+    ]
+}
