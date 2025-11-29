@@ -71,12 +71,15 @@ function renderPackage(pkg) {
             <hr>
             <a href="${pkg.git_url}" target="_blank" style="color: white;">Git Repository</a>
             <hr>
+            <a href="${pkg.zipfile}"><button class="install-btn">Install Directly</button></a>
         </div>
         <hr>
         <div id="readme-content"></div>
     `;
 
     hljs.highlightAll();
+
+    console.log("Addded Info");
 
     // Render README markdown
     document.getElementById('readme-content').innerHTML = marked.parse(pkg.readmeContent);
