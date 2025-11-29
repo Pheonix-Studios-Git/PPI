@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Disallow: /pkgpage
+Disallow: /data
+
+Sitemap: https://pheonix-studios-git.github.io/PPI/sitemap.xml
