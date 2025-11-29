@@ -12,6 +12,19 @@
             "readme": "PAC/README.md",
             "install": "nfx install:PAC",
             "zipfile": "pac.zip"
+        },
+        {
+            "name": "NFX",
+            "version": "0.1.0",
+            "git_url": "https://github.com/Pheonix-Studios-Git/NFX",
+            "dependencies": [],
+            "os": ["linux"],
+            "arch": ["x86_64"],
+            "description": "Nova Pheonix Package Manager",
+            "author": "Pheonix Studios (AkshuDev)",
+            "readme": "NFX/README.md",
+            "install": "nfx install:nfx",
+            "zipfile": "nfx.zip"
         }
     ]
 }

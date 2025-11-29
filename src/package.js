@@ -3,6 +3,8 @@ const urlParams = new URLSearchParams(window.location.search);
 const packageName = urlParams.get('name');
 const packages_loc = urlParams.get('data_loc');
 
+let packages_gv = [];
+
 async function loadPackages() {
     if (packages_loc == "") return null;
     if (packageName == "") return null;
@@ -22,6 +24,8 @@ async function loadPackages() {
                 package_object.readmeContent = "README not available.";
             }
         }
+
+        packages_gv = packages.packages;
 
         renderPackage(package_object);
     } catch (err) {
@@ -79,10 +83,35 @@ function renderPackage(pkg) {
 
     hljs.highlightAll();
 
-    console.log("Addded Info");
-
     // Render README markdown
     document.getElementById('readme-content').innerHTML = marked.parse(pkg.readmeContent);
 }
+
+document.querySelector('#search-bar').addEventListener("keydown", async (event) => {
+    if (event.key == "Enter") {
+        const q = document.querySelector('#search-bar').value.trim();
+        if (q) {
+            const res_obj = packages_gv.find(obj => obj.name === q);
+
+            if (res_obj.readme === "") {
+                res_obj.readmeContent = "README not available.";
+            } else {
+                try {
+                    const readmeRes = await fetch(`../../data/${res_obj.readme}`);
+                    res_obj.readmeContent = await readmeRes.text(); // store README content
+                } catch (err) {
+                    console.error(`Failed to load README for ${res_obj.name}:`, err);
+                    res_obj.readmeContent = "README not available.";
+                }
+            }
+            if (res_obj) {
+                renderPackage(res_obj);
+            } else {
+                alert(`Package [${q}] does not exist, hence no info found!`);
+            }
+        }
+    }
+});
+
 
 loadPackages();

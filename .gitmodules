@@ -1,3 +1,6 @@
 [submodule "data/PAC"]
 	path = data/PAC
 	url = https://github.com/AkshuDev/PAC
+[submodule "data/NFX"]
+	path = data/NFX
+	url = https://github.com/Pheonix-Studios-Git/NFX

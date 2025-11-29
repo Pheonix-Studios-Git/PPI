@@ -54,7 +54,7 @@
 
 #package-list {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    gap: 1.5rem;
+    grid-template-columns: repeat(auto-fit, minmax(0rem, 1fr));
+    gap: 20rem;
     justify-items: center;
 }
