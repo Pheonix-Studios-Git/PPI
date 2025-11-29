@@ -10,7 +10,8 @@
             "description": "Pheonix Assembler Collection",
             "author": "Pheonix Studios (AkshuDev)",
             "readme": "PAC/README.md",
-            "install": "nfx install:PAC"
+            "install": "nfx install:PAC",
+            "zipfile": "pac.zip"
         }
     ]
 }
