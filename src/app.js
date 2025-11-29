@@ -21,7 +21,7 @@ function renderPackages(packages, data_loc) {
 
     packages.forEach(pkg => {
         console.log("Displaying package");
-        const card = PackageCard(pkg, data_loc); // PackageCard can now display data
+        const card = PackageCard(pkg, "../." + data_loc); // PackageCard can now display data
         container.appendChild(card);
         console.log("Appended card: ${card}");
     });

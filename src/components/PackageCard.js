@@ -7,7 +7,7 @@ export function PackageCard(pkg, data_loc) {
             <h2>${pkg.name}</h2>
             <p>${pkg.description}</p>
             <p>Version: ${pkg.version}</p>
-            <a href="./data/${pkg.zipfile}"><button class="install-btn">Install</button></a>
+            <a href="./data/${pkg.zipfile}"><button class="install-btn">Install Directly</button></a>
         </a>
     `;
     return card;
