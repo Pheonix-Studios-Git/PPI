@@ -1,4 +1,4 @@
-import { PackageCard } from "./src/components/PackageCard.js";
+import { PackageCard } from "./components/PackageCard.js";
 
 // Fetch JSON and render packages
 async function loadPackages() {
