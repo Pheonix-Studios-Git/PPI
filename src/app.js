@@ -1,15 +1,15 @@
-import { PackageCard } from "src/components/PackageCard.js";
+import { PackageCard } from "./src/components/PackageCard.js";
 
 // Fetch JSON and render packages
 async function loadPackages() {
     try {
-        const res = await fetch('data/packages.json');
+        const res = await fetch('./data/packages.json');
         const packages = await res.json();
 
         // For each package, fetch the README file
         for (const pkg of packages.packages) {
             try {
-                const readmeRes = await fetch(`data/${pkg.readme}`);
+                const readmeRes = await fetch(`./data/${pkg.readme}`);
                 pkg.readmeContent = await readmeRes.text(); // store README content
             } catch (err) {
                 console.error(`Failed to load README for ${pkg.name}:`, err);
@@ -17,7 +17,7 @@ async function loadPackages() {
             }
         }
 
-        renderPackages(packages.packages, "data/packages.json");
+        renderPackages(packages.packages, "./data/packages.json");
     } catch (err) {
         console.error('Failed to load packages.json:', err);
     }
