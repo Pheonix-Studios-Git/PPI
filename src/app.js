@@ -6,16 +6,7 @@ async function loadPackages() {
         const res = await fetch('./data/packages.json');
         const packages = await res.json();
 
-        // For each package, fetch the README file
-        for (const pkg of packages.packages) {
-            try {
-                const readmeRes = await fetch(`./data/${pkg.readme}`);
-                pkg.readmeContent = await readmeRes.text(); // store README content
-            } catch (err) {
-                console.error(`Failed to load README for ${pkg.name}:`, err);
-                pkg.readmeContent = "README not available.";
-            }
-        }
+        console.log("Fetched packages: ${packages}");
 
         renderPackages(packages.packages, "./data/packages.json");
     } catch (err) {
@@ -29,8 +20,10 @@ function renderPackages(packages, data_loc) {
     container.innerHTML = "";
 
     packages.forEach(pkg => {
+        console.log("Displaying package");
         const card = PackageCard(pkg, data_loc); // PackageCard can now display data
         container.appendChild(card);
+        console.log("Appended card: ${card}");
     });
 }
 
