@@ -11,7 +11,7 @@
             "author": "Pheonix Studios (AkshuDev)",
             "readme": "PAC/README.md",
             "install": "nfx install:PAC",
-            "zipfile": "PAC/nfx_zip/pac.zip"
+            "zipfile": "PAC/nfx_zip/PAC.zip"
         },
         {
             "name": "NFX",
@@ -23,8 +23,8 @@
             "description": "Nova Pheonix Package Manager",
             "author": "Pheonix Studios (AkshuDev)",
             "readme": "NFX/README.md",
-            "install": "nfx install:nfx",
-            "zipfile": "NFX/nfx_zip/nfx.zip"
+            "install": "nfx install:NFX",
+            "zipfile": "NFX/nfx_zip/NFX.zip"
         }
     ]
 }
