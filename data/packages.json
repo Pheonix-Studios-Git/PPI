@@ -11,7 +11,7 @@
             "author": "Pheonix Studios (AkshuDev)",
             "readme": "PAC/README.md",
             "install": "nfx install:PAC",
-            "zipfile": "pac.zip"
+            "zipfile": "PAC/pac.zip"
         },
         {
             "name": "NFX",
@@ -24,7 +24,7 @@
             "author": "Pheonix Studios (AkshuDev)",
             "readme": "NFX/README.md",
             "install": "nfx install:nfx",
-            "zipfile": "nfx.zip"
+            "zipfile": "NFX/nfx.zip"
         }
     ]
 }
