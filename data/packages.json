@@ -5,7 +5,7 @@
             "version": "0.1.0",
             "git_url": "https://github.com/AkshuDev/PAC",
             "dependencies": [],
-            "os": ["linux"],
+            "os": ["linux", "windows"],
             "arch": ["x86_64"],
             "description": "Pheonix Assembler Collection",
             "author": "Pheonix Studios (AkshuDev)",
