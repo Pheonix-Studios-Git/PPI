@@ -75,7 +75,7 @@ function renderPackage(pkg) {
             <hr>
             <a href="${pkg.git_url}" target="_blank" style="color: white;">Git Repository</a>
             <hr>
-            <a href="${pkg.zipfile}"><button class="install-btn">Install Directly</button></a>
+            <a href="../../data/${pkg.zipfile}"><button class="install-btn">Install Directly</button></a>
         </div>
         <hr>
         <div id="readme-content"></div>
