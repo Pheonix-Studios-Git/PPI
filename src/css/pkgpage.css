@@ -4,7 +4,6 @@
     padding: 1.5rem;
     border-radius: 1rem;
     background-color: var(--card-bg);
-    box-shadow: 0 0 25px var(--card-shadow);
     text-align: left;
 }
 
@@ -13,17 +12,15 @@
     padding: 0.5rem 1rem;
     border-radius: 999px;
     border: none;
-    background: linear-gradient(90deg, var(--primary-color), var(--secondary-color));
-    color: #fff;
+    background-color: var(--secondary-color);
+    color: var(--text-color);
     font-weight: bold;
     cursor: pointer;
-    box-shadow: 0 0 15px var(--primary-color);
     transition: all 0.3s ease;
 }
 
 .install-btn:hover {
     transform: scale(1.05);
-    box-shadow: 0 0 25px var(--secondary-color);
 }
 
 #readme-content {
@@ -32,7 +29,6 @@
     padding: 2rem;
     background-color: var(--card-bg);
     border-radius: 1rem;
-    box-shadow: 0 0 20px var(--card-shadow);
 }
 
 #readme-content h1,
@@ -50,14 +46,12 @@
 
 .dependency-list {
     list-style: none;
-    /* Remove default bullets */
     padding-left: 0;
     margin: 0.5rem 0;
 }
 
 .dependency-item {
     padding-left: 1.5rem;
-    /* Indent to create "tab" effect */
     position: relative;
     margin-bottom: 0.3rem;
     font-family: 'Orbitron', sans-serif;
@@ -67,7 +61,6 @@
 
 .dependency-item::before {
     content: '▸';
-    /* small arrow or tab icon */
     position: absolute;
     left: 0;
     color: var(--primary-color);
@@ -75,14 +68,12 @@
 
 .os-list {
     list-style: none;
-    /* Remove default bullets */
     padding-left: 0;
     margin: 0.5rem 0;
 }
 
 .os-item {
     padding-left: 1.5rem;
-    /* Indent to create "tab" effect */
     position: relative;
     margin-bottom: 0.3rem;
     font-family: 'Orbitron', sans-serif;
@@ -92,7 +83,6 @@
 
 .os-item::before {
     content: '▸';
-    /* small arrow or tab icon */
     position: absolute;
     left: 0;
     color: var(--primary-color);
@@ -100,14 +90,12 @@
 
 .arch-list {
     list-style: none;
-    /* Remove default bullets */
     padding-left: 0;
     margin: 0.5rem 0;
 }
 
 .arch-item {
     padding-left: 1.5rem;
-    /* Indent to create "tab" effect */
     position: relative;
     margin-bottom: 0.3rem;
     font-family: 'Orbitron', sans-serif;
@@ -117,7 +105,6 @@
 
 .arch-item::before {
     content: '▸';
-    /* small arrow or tab icon */
     position: absolute;
     left: 0;
     color: var(--primary-color);
@@ -125,8 +112,4 @@
 
 a {
     text-decoration: none;
-}
-
-a:hover {
-    color: cyan;
 }

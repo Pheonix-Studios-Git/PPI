@@ -4,6 +4,19 @@ const packageName = urlParams.get('name');
 const packages_loc = urlParams.get('data_loc');
 
 let packages_gv = [];
+const zipCache = {};
+
+async function getZip(zipPath) {
+    if (zipCache[zipPath]) return zipCache[zipPath];
+
+    const res = await fetch(zipPath);
+    const arrayBuffer = await res.arrayBuffer();
+
+    const zip = await JSZip.loadAsync(arrayBuffer);
+    zipCache[zipPath] = zip;
+
+    return zip;
+}
 
 async function loadPackages() {
     if (packages_loc == "") return null;
@@ -17,10 +30,18 @@ async function loadPackages() {
             package_object.readmeContent = "README not available.";
         } else {
             try {
-                const readmeRes = await fetch(`../../data/${package_object.readme}`);
-                package_object.readmeContent = await readmeRes.text(); // store README content
+                const zip = await getZip(`../../data/${package_object.zipfile}`);
+                console.log(zip);
+
+                const readmeFile = zip.file(package_object.readme || "README.md");
+
+                if (!readmeFile) {
+                    package_object.readmeContent = "README not available.";
+                } else {
+                    package_object.readmeContent = await readmeFile.async("string");
+                }
             } catch (err) {
-                console.error(`Failed to load README for ${package_object.name}:`, err);
+                console.error(`Failed to load ZIP for ${package_object.name}:`, err);
                 package_object.readmeContent = "README not available.";
             }
         }
@@ -81,10 +102,10 @@ function renderPackage(pkg) {
         <div id="readme-content"></div>
     `;
 
-    hljs.highlightAll();
-
     // Render README markdown
     document.getElementById('readme-content').innerHTML = marked.parse(pkg.readmeContent);
+
+    hljs.highlightAll();
 }
 
 document.querySelector('#search-bar').addEventListener("keydown", async (event) => {
@@ -97,10 +118,17 @@ document.querySelector('#search-bar').addEventListener("keydown", async (event) 
                 res_obj.readmeContent = "README not available.";
             } else {
                 try {
-                    const readmeRes = await fetch(`../../data/${res_obj.readme}`);
-                    res_obj.readmeContent = await readmeRes.text(); // store README content
+                    const zip = await getZip(`../../data/${res_obj.zipfile}`);
+
+                    const readmeFile = zip.file(res_obj.readme || "README.md");
+
+                    if (!readmeFile) {
+                        res_obj.readmeContent = "README not available.";
+                    } else {
+                        res_obj.readmeContent = await readmeFile.async("string");
+                    }
                 } catch (err) {
-                    console.error(`Failed to load README for ${res_obj.name}:`, err);
+                    console.error(`Failed to load ZIP for ${res_obj.name}:`, err);
                     res_obj.readmeContent = "README not available.";
                 }
             }

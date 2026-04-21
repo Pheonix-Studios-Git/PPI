@@ -9,10 +9,11 @@
             "arch": ["x86_64"],
             "description": "Pheonix Assembler Collection",
             "author": "Pheonix Studios (AkshuDev)",
-            "readme": "PAC/README.md",
+            "readme": "README.md",
             "install": "nfx install:PAC",
             "zipfile": "PAC/nfx_zip/PAC.zip",
-	    "signed_zipfile": "PAC/nfx_zip/PAC.zip.sig"
+            "update": "21-04-2026",
+	        "signed_zipfile": "PAC/nfx_zip/PAC.zip.sig"
         },
         {
             "name": "NFX",
@@ -23,10 +24,11 @@
             "arch": ["x86_64"],
             "description": "Nova Pheonix Package Manager",
             "author": "Pheonix Studios (AkshuDev)",
-            "readme": "NFX/README.md",
+            "readme": "README.md",
             "install": "nfx install:NFX",
             "zipfile": "NFX/nfx_zip/NFX.zip",
-	    "signed_zipfile": "NFX/nfx_zip/NFX.zip.sig"
+            "update": "21-04-2026",
+	        "signed_zipfile": "NFX/nfx_zip/NFX.zip.sig"
         }
     ]
 }
