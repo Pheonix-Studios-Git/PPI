@@ -3,6 +3,7 @@
         {
             "name": "PAC",
             "version": "0.1.0",
+	    "status": "beta",
             "git_url": "https://github.com/AkshuDev/PAC",
             "dependencies": [],
             "os": ["linux", "windows"],
@@ -12,12 +13,13 @@
             "readme": "README.md",
             "install": "nfx install PAC",
             "zipfile": "PAC/nfx_zip/PAC.zip",
-            "update": "2026-04-21",
-	        "signed_zipfile": "PAC/nfx_zip/PAC.zip.sig"
+            "update": "2026-04-22",
+	    "signed_zipfile": "PAC/nfx_zip/PAC.zip.sig"
         },
         {
             "name": "NFX",
             "version": "0.1.0",
+	    "status": "stable",
             "git_url": "https://github.com/Pheonix-Studios-Git/NFX",
             "dependencies": [],
             "os": ["linux", "windows"],
@@ -27,9 +29,25 @@
             "readme": "README.md",
             "install": "nfx install NFX",
             "zipfile": "NFX/nfx_zip/NFX.zip",
-            "update": "2026-04-21",
+            "update": "2026-04-22",
 	    "signed_zipfile": "NFX/nfx_zip/NFX.zip.sig"
-        }
+        },
+	{
+	    "name": "PDASM",
+	    "version": "1.0.0",
+	    "status": "stable",
+	    "git_url": "https://github.com/AkshuDev/PheonixVirtualCpu/tree/master/tools/PDASM",
+	    "dependencies": [],
+	    "os": ["linux", "windows"],
+	    "arch": ["x86_64"],
+	    "description": "Pheonix Disassembler",
+	    "author": "Pheonix Studios (AkshuDev)",
+	    "readme": "README.md",
+	    "install": "nfx install PDASM",
+	    "zipfile": "PDASM/nfx_zip/PDASM.zip",
+	    "update": "2026-04-22",
+	    "signed_zipfile": "PDASM/nfx_zip/PDASM.zip.sig"
+	}
     ],
-    "modified": "2026-04-21"
+    "modified": "2026-04-22"
 }

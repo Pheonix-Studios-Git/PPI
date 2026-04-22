@@ -1,8 +1,8 @@
 .package-card {
     background-color: var(--card-bg);
     border: 1px solid var(--primary-color);
-    border-radius: 15px;
-    padding: 1.5rem;
+    border-radius: 25px;
+    padding: 1rem;
     margin: 1rem;
     width: 300px;
     transition: transform 0.3s;
@@ -47,6 +47,6 @@
 #package-list {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(0rem, 1fr));
-    gap: 20rem;
+    gap: 0rem 20rem;
     justify-items: center;
 }

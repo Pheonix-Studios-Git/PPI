@@ -76,6 +76,7 @@ function renderPackage(pkg) {
             <h2>${pkg.name}</h2>
             <p>Version: ${pkg.version}</p>
             <p>Author: ${pkg.author}</p>
+            <p>Status: ${pkg.status}</p>
             <hr>
             <p>Dependencies:</p>
             <ul class="dependency-list">
