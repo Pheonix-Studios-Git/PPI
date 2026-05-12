@@ -23,7 +23,7 @@
     },
     {
       "name": "NFX",
-      "version": "0.1.0",
+      "version": "1.0.0",
       "status": "stable",
       "git_url": "https://github.com/Pheonix-Studios-Git/NFX",
       "dependencies": [],
@@ -38,9 +38,9 @@
       "author": "Pheonix Studios (AkshuDev)",
       "readme": "README.md",
       "install": "nfx install NFX",
-      "zipfile": "NFX/nfx_zip/NFX.zip",
-      "update": "2026-04-24 20:36",
-      "signed_zipfile": "NFX/nfx_zip/NFX.zip.sig"
+      "zipfile": "NFX/nfx_zip/NFX-v1.0.0.zip",
+      "update": "2026-05-12 20:59",
+      "signed_zipfile": "NFX/nfx_zip/NFX-v1.0.0.zip.sig"
     },
     {
       "name": "PDASM",
@@ -84,5 +84,5 @@
       "signed_zipfile": "Pheonix-Engine/nfx_zip/Pheonix-Engine.zip.sig"
     }
   ],
-  "modified": "2026-04-24 21:16"
+  "modified": "2026-05-12 21:24"
 }
