@@ -1,12 +1,10 @@
 #!/usr/bin/env bash
-set -euo pipefail
-
 echo "Updating packages.json..."
 
 DATE="$(date '+%Y-%m-%d %H:%M')"
 
 PAC_JSON=$(unzip -p data/PAC/nfx_zip/PAC.zip nfx.json)
-NFX_JSON=$(unzip -p data/NFX/nfx_zip/NFX-v1.0.0.zip nfx.json)
+NFX_JSON=$(unzip -p data/NFX/nfx_zip/NFX-v1.0.1.zip nfx.json)
 PDASM_JSON=$(unzip -p data/PDASM/nfx_zip/PDASM.zip nfx.json)
 PHEONIX_JSON=$(unzip -p data/Pheonix-Engine/nfx_zip/Pheonix-Engine.zip nfx.json)
 
