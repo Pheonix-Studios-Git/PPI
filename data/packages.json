@@ -48,6 +48,7 @@
       "signed_zipfile": "NFX/nfx_zip/NFX-v%.zip.sig",
       "versioning_enabled": true,
       "versions": [
+        "1.0.0",
         "1.0.1"
       ],
       "latest_version": "1.0.1"
@@ -104,5 +105,5 @@
       "latest_version": ""
     }
   ],
-  "modified": "2026-05-19 19:47"
+  "modified": "2026-05-19 19:59"
 }
