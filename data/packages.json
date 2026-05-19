@@ -39,7 +39,7 @@
       "readme": "README.md",
       "install": "nfx install NFX",
       "zipfile": "NFX/nfx_zip/NFX-v1.0.1.zip",
-      "update": "2026-05-18 20:59",
+      "update": "2026-05-19 01:19",
       "signed_zipfile": "NFX/nfx_zip/NFX-v1.0.1.zip.sig"
     },
     {
@@ -84,5 +84,5 @@
       "signed_zipfile": "Pheonix-Engine/nfx_zip/Pheonix-Engine.zip.sig"
     }
   ],
-  "modified": "2026-05-18 21:24"
+  "modified": "2026-05-19 19:28"
 }

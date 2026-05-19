@@ -71,12 +71,40 @@ function renderPackage(pkg) {
         ? pkg.arch.map(dep => `<li class="arch-item">→ ${dep}</li>`).join('')
         : '<li class="arch-item">None</li>';
 
+    var product_hunt = ""
+    if (pkg.name == "NFX") {
+        if (document.documentElement.getAttribute('data-theme') === 'light') {
+            product_hunt = `
+            <a href="https://www.producthunt.com/products/github-377?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-nfx-2" target="_blank" rel="noopener noreferrer"><img alt="NFX - A new package manager, that works within Pheonix Ecosystem! | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1146325&amp;theme=light&amp;t=1779198568341"></a>
+            `
+        } else {
+            product_hunt = `
+            <a href="https://www.producthunt.com/products/github-377?embed=true&amp;utm_source=badge-featured&amp;utm_medium=badge&amp;utm_campaign=badge-nfx-2" target="_blank" rel="noopener noreferrer"><img alt="NFX - A new package manager, that works within Pheonix Ecosystem! | Product Hunt" width="250" height="54" src="https://api.producthunt.com/widgets/embed-image/v1/featured.svg?post_id=1146325&amp;theme=dark&amp;t=1779198139596"></a>
+            `
+        }
+    }
+
+    const update_isoString = pkg.update.replace(" ", "T");
+    const update_date = new Date(update_isoString);
+    const date_options = {
+        year: 'numeric',
+        month: 'long',
+        day: 'numeric',
+        hour: '2-digit',
+        minute: '2-digit',
+        hour12: true 
+    };
+
+    const update_date_formatted = new Intl.DateTimeFormat('en-US', date_options).format(update_date);
+
     container.innerHTML = `
         <div class="package-header">
             <h2>${pkg.name}</h2>
             <p>Version: ${pkg.version}</p>
             <p>Author: ${pkg.author}</p>
             <p>Status: ${pkg.status}</p>
+            <p>Updated: ${update_date_formatted}</p>
+            ${product_hunt}
             <hr>
             <p>Dependencies:</p>
             <ul class="dependency-list">
