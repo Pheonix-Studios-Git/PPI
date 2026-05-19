@@ -23,15 +23,27 @@ for arg in "$@"; do
   esac
 done
 
-# Require at least one update target
-if [ ${#UPDATES[@]} -eq 0 ]; then
-  echo "Usage:"
-  echo "  ./update.sh --update=PAC --update=PDASM"
-  exit 1
-fi
-
 # Start with existing packages.json
 TMP_JSON="$(cat data/packages.json)"
+
+# Only update modified
+if [ ${#UPDATES[@]} -eq 0 ]; then
+  echo "Updating only package list..."
+
+  TMP_JSON=$(echo "$TMP_JSON" | jq \
+    --arg modified "$DATE" \
+    '.modified = $modified')
+
+  echo "$TMP_JSON" > data/packages.tmp.json
+
+  echo "packages edit done!"
+
+  mv data/packages.tmp.json data/packages.json
+
+  echo "Moving Done!"
+  echo "Done."
+  exit 0
+fi
 
 # Helper function
 update_package() {

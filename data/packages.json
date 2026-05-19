@@ -19,7 +19,12 @@
       "install": "nfx install PAC",
       "zipfile": "PAC/nfx_zip/PAC.zip",
       "update": "2026-04-24 20:44",
-      "signed_zipfile": "PAC/nfx_zip/PAC.zip.sig"
+      "signed_zipfile": "PAC/nfx_zip/PAC.zip.sig",
+      "versioning_enabled": false,
+      "versions": [
+        ""
+      ],
+      "latest_version": ""
     },
     {
       "name": "NFX",
@@ -38,9 +43,14 @@
       "author": "Pheonix Studios (AkshuDev)",
       "readme": "README.md",
       "install": "nfx install NFX",
-      "zipfile": "NFX/nfx_zip/NFX-v1.0.1.zip",
+      "zipfile": "NFX/nfx_zip/NFX-v%.zip",
       "update": "2026-05-19 01:19",
-      "signed_zipfile": "NFX/nfx_zip/NFX-v1.0.1.zip.sig"
+      "signed_zipfile": "NFX/nfx_zip/NFX-v%.zip.sig",
+      "versioning_enabled": true,
+      "versions": [
+        "1.0.1"
+      ],
+      "latest_version": "1.0.1"
     },
     {
       "name": "PDASM",
@@ -61,7 +71,12 @@
       "install": "nfx install PDASM",
       "zipfile": "PDASM/nfx_zip/PDASM.zip",
       "update": "2026-04-24 20:44",
-      "signed_zipfile": "PDASM/nfx_zip/PDASM.zip.sig"
+      "signed_zipfile": "PDASM/nfx_zip/PDASM.zip.sig",
+      "versioning_enabled": false,
+      "versions": [
+        ""
+      ],
+      "latest_version": ""
     },
     {
       "name": "Pheonix-Engine",
@@ -81,8 +96,13 @@
       "install": "nfx install Pheonix-Engine",
       "zipfile": "Pheonix-Engine/nfx_zip/Pheonix-Engine.zip",
       "update": "2026-04-24 20:45",
-      "signed_zipfile": "Pheonix-Engine/nfx_zip/Pheonix-Engine.zip.sig"
+      "signed_zipfile": "Pheonix-Engine/nfx_zip/Pheonix-Engine.zip.sig",
+      "versioning_enabled": false,
+      "versions": [
+        ""
+      ],
+      "latest_version": ""
     }
   ],
-  "modified": "2026-05-19 19:28"
+  "modified": "2026-05-19 19:47"
 }
