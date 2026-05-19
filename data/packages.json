@@ -28,7 +28,7 @@
     },
     {
       "name": "NFX",
-      "version": "1.0.1",
+      "version": "1.0.2",
       "status": "stable",
       "git_url": "https://github.com/Pheonix-Studios-Git/NFX",
       "dependencies": [],
@@ -49,9 +49,10 @@
       "versioning_enabled": true,
       "versions": [
         "1.0.0",
-        "1.0.1"
+        "1.0.1",
+        "1.0.2"
       ],
-      "latest_version": "1.0.1"
+      "latest_version": "1.0.2"
     },
     {
       "name": "PDASM",
@@ -105,5 +106,5 @@
       "latest_version": ""
     }
   ],
-  "modified": "2026-05-19 19:59"
+  "modified": "2026-05-19 22:55"
 }

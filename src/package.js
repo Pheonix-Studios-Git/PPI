@@ -30,7 +30,7 @@ async function loadPackages() {
             package_object.readmeContent = "README not available.";
         } else {
             try {
-                const zip = await getZip(`../../data/${package_object.zipfile}`);
+                const zip = await getZip(`../../data/${resolveFile(package_object)}`);
                 console.log(zip);
 
                 const readmeFile = zip.file(package_object.readme || "README.md");
@@ -52,6 +52,30 @@ async function loadPackages() {
     } catch (err) {
         console.error('Failed to load packages.json:', err);
     }
+}
+
+function resolveVersion(pkg, requestedVersion = null) {
+    if (!pkg.versioning_enabled) {
+        return null;
+    }
+
+    if (!requestedVersion) {
+        return pkg.latest_version;
+    }
+
+    if (pkg.versions.includes(requestedVersion)) {
+        return requestedVersion;
+    }
+
+    return null;
+}
+
+function resolveFile(pkg, reqVer = null) {
+    var v = resolveVersion(pkg, reqVer)
+    if (v === null) {
+        return pkg.zipfile
+    }
+    return pkg.zipfile.replace("%", v);
 }
 
 // Render package page
@@ -123,13 +147,58 @@ function renderPackage(pkg) {
             <hr>
             <p>Install:<pre><code class="language-bash">${pkg.install}</code></pre></p>
             <hr>
-            <a href="${pkg.git_url}" target="_blank" style="color: white;">Git Repository</a>
+            <a href="${pkg.git_url}" target="_blank">Git Repository</a>
             <hr>
-            <a href="../../data/${pkg.zipfile}"><button class="install-btn">Install Directly</button></a>
+            <div class="version-box">
+                <span id="version-label" style="cursor:pointer;">
+                    Select Version: ${pkg.version} ▾
+                </span>
+
+                <select id="version-select" style="display:none;"></select>
+            </div>
+            <a id="install-link" href="../../data/${resolveFile(pkg)}">
+                <button class="install-btn">Install Directly</button>
+            </a>
         </div>
         <hr>
         <div id="readme-content"></div>
     `;
+
+    const versionLabel = document.getElementById("version-label");
+    const versionSelect = document.getElementById("version-select");
+    const installLink = document.getElementById("install-link");
+
+    let currentVersion = pkg.version;
+
+    if (pkg.versioning_enabled && pkg.versions?.length > 0) {
+        pkg.versions.slice().reverse().forEach(v => {
+            const opt = document.createElement("option");
+            opt.id = "version-option";
+            opt.value = v;
+            opt.textContent = v + (v === pkg.latest_version ? " (latest)" : "");
+            versionSelect.appendChild(opt);
+        });
+
+        versionSelect.value = pkg.latest_version;
+    } else {
+        const opt = document.createElement("option");
+        opt.id = "version-option";
+        opt.value = pkg.version;
+        opt.textContent = pkg.version + " (current)";
+        versionSelect.appendChild(opt);
+        versionSelect.value = pkg.version;
+    }
+
+    versionLabel.onclick = () => {
+        versionSelect.style.display = versionSelect.style.display === "none" ? "block" : "none";
+    };
+
+    versionSelect.onchange = () => {
+        currentVersion = versionSelect.value;
+        versionLabel.innerText = `Version: ${currentVersion} ▼`;
+        const resolvedFile = resolveFile(pkg, currentVersion);
+        installLink.href = `../../data/${resolvedFile}`;
+    };
 
     // Render README markdown
     document.getElementById('readme-content').innerHTML = marked.parse(pkg.readmeContent);

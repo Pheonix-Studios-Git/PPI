@@ -1,3 +1,27 @@
+function resolveVersion(pkg, requestedVersion = null) {
+    if (!pkg.versioning_enabled) {
+        return null;
+    }
+
+    if (!requestedVersion) {
+        return pkg.latest_version;
+    }
+
+    if (pkg.versions.includes(requestedVersion)) {
+        return requestedVersion;
+    }
+
+    return null;
+}
+
+function resolveFile(pkg, reqVer = null) {
+    var v = resolveVersion(pkg, reqVer)
+    if (v === null) {
+        return pkg.zipfile
+    }
+    return pkg.zipfile.replace("%", v);
+}
+
 export function PackageCard(pkg, data_loc) {
     const card = document.createElement("div");
     card.className = "package-card";
@@ -7,7 +31,7 @@ export function PackageCard(pkg, data_loc) {
             <h2>${pkg.name}</h2>
             <p>${pkg.description}</p>
             <p>Version: ${pkg.version}</p>
-            <a href="./data/${pkg.zipfile}"><button class="install-btn">Install Directly</button></a>
+            <a href="./data/${resolveFile(pkg.zipfile)}"><button class="install-btn">Install Directly</button></a>
         </a>
     `;
     return card;

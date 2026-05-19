@@ -112,4 +112,35 @@
 
 a {
     text-decoration: none;
+    color: var(--text-color)
+}
+
+.version-box {
+    position: relative;
+    margin: 0.5rem 0;
+}
+
+#version-label {
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+    transition: font-size 0.2s ease-in-out;
+}
+
+#version-label:hover {
+    font-size: 1.03rem;
+}
+
+#version-select {
+    background: var(--card-bg);
+    border-radius: 2px;
+    color: var(--text-color);
+    border-radius: 25px;
+    padding: 0.3rem;
+    overflow: hidden;
+    z-index: 999;
+}
+
+#hidden {
+    display: none;
 }

@@ -23,7 +23,7 @@
 }
 
 .package-card a {
-    color: var(--secondary-color);
+    color: var(--text-color);
     text-decoration: none;
     font-weight: bold;
 }
