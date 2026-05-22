@@ -1,0 +1,12 @@
+{
+    "@context": "https://schema.org",
+    "@type": "SoftwareSourceCode",
+    "name": "Pheonix Package Index",
+    "description": "Official package index for the Nova Pheonix Package Manager (NFX). Provides search, metadata, and documentation for Pheonix packages.",
+    "url": "https://pheonix-studios-git.github.io/PPI/",
+    "programmingLanguage": "Multiple",
+    "creator": {
+        "@type": "Organization",
+        "name": "Pheonix Studios"
+    }
+}

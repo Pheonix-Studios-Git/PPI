@@ -121,7 +121,7 @@ function renderPackage(pkg) {
 
     const update_date_formatted = new Intl.DateTimeFormat('en-US', date_options).format(update_date);
 
-    container.innerHTML = `
+    container.innerHTML = DOMPurify.sanitize(`
         <div class="package-header">
             <h2>${pkg.name}</h2>
             <p>Version: ${pkg.version}</p>
@@ -162,7 +162,7 @@ function renderPackage(pkg) {
         </div>
         <hr>
         <div id="readme-content"></div>
-    `;
+    `);
 
     const versionLabel = document.getElementById("version-label");
     const versionSelect = document.getElementById("version-select");
@@ -201,7 +201,7 @@ function renderPackage(pkg) {
     };
 
     // Render README markdown
-    document.getElementById('readme-content').innerHTML = marked.parse(pkg.readmeContent);
+    document.getElementById('readme-content').innerHTML = DOMPurify.sanitize(marked.parse(pkg.readmeContent));
 
     hljs.highlightAll();
 }

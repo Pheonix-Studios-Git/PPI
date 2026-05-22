@@ -18,26 +18,29 @@
     <meta name="twitter:title" content="Pheonix Package Index">
     <meta name="twitter:description" content="Explore packages for the NFX (Nova Pheonix) Package Manager.">
     <meta name="google-site-verification" content="X5i3PtvJmAVWl-fg1SnZpeer0OZNud3oHsA5SAehJH0" />
-    <script type="application/ld+json">
-    {
-        "@context": "https://schema.org",
-        "@type": "SoftwareSourceCode",
-        "name": "Pheonix Package Index",
-        "description": "Official package index for the Nova Pheonix Package Manager (NFX). Provides search, metadata, and documentation for Pheonix packages.",
-        "url": "https://pheonix-studios-git.github.io/PPI/",
-        "programmingLanguage": "Multiple",
-        "creator": {
-            "@type": "Organization",
-            "name": "Pheonix Studios"
-        }
-    }
-    </script>
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'none';
+        script-src 'self';
+        style-src 'self';
+        img-src 'self' data:;
+        font-src 'self';
+        connect-src 'self';
+        manifest-src 'self';
+        base-uri 'none';
+        form-action 'none';
+        frame-ancestors 'none';
+        object-src 'none';
+        upgrade-insecure-requests;
+        block-all-mixed-content;
+    ">
+    <script src="./src/components/DOMPurify.js"></script>
+    <script type="application/ld+json" src="./schema.json"></script>
 
     <link rel="icon" type="image/png" href="./assets/logo.png">
     
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="./src/css/card.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="./src/css/awsomefont.min.css">
 </head>
 
 <body>

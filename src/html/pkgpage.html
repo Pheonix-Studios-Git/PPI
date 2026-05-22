@@ -7,10 +7,26 @@
     <title>Pheonix Package Index</title>
     <link rel="stylesheet" href="../../index.css">
     <link rel="stylesheet" href="../css/pkgpage.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/atom-one-dark.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/7.0.1/css/all.min.css" integrity="sha512-2SwdPD6INVrV/lHTZbO2nodKhrnDdJK9/kg2XD1r9uGqPo1cUbujc+IYdlYdEErWNu69gVcYgdxlmVmzTWnetw==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+    <link rel="stylesheet" href="../css/atom-one-dark.min.css">
+    <link rel="stylesheet" href="../css/awsomefont.min.css">
     <link rel="icon" type="image/png" href="../../assets/logo.png">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <meta http-equiv="Content-Security-Policy" content="
+        default-src 'none';
+        script-src 'self';
+        style-src 'self';
+        img-src 'self' data:;
+        font-src 'self';
+        connect-src 'self';
+        manifest-src 'self';
+        base-uri 'none';
+        form-action 'none';
+        frame-ancestors 'none';
+        object-src 'none';
+        upgrade-insecure-requests;
+        block-all-mixed-content;
+    ">
+    <script src="../components/DOMPurify.js"></script>
+    <script src="../components/highlight.min.js"></script>
 </head>
 
 <body>
@@ -29,8 +45,8 @@
         <p>&copy; 2026 Pheonix Studios</p>
     </footer>
 
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
+    <script src="../components/jszip.min.js"></script>
+    <script src="../components/marked.min.js"></script>
     <script type="module" src="../package.js"></script>
     <script type="module" src="../theme.js"></script>
 </body>
