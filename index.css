@@ -94,3 +94,11 @@ footer {
     background-color: transparent;
     border: none;
 }
+
+.hidden {
+    display: none;
+}
+
+.visible-block {
+    display: block;
+}

@@ -150,11 +150,11 @@ function renderPackage(pkg) {
             <a href="${pkg.git_url}" target="_blank">Git Repository</a>
             <hr>
             <div class="version-box">
-                <span id="version-label" style="cursor:pointer;">
+                <span id="version-label">
                     Select Version: ${pkg.version} ▾
                 </span>
 
-                <select id="version-select" style="display:none;"></select>
+                <select id="version-select" class="hidden"></select>
             </div>
             <a id="install-link" href="../../data/${resolveFile(pkg)}">
                 <button class="install-btn">Install Directly</button>
@@ -189,8 +189,15 @@ function renderPackage(pkg) {
         versionSelect.value = pkg.version;
     }
 
+    var mode = "none";
     versionLabel.onclick = () => {
-        versionSelect.style.display = versionSelect.style.display === "none" ? "block" : "none";
+        if (mode == "none") {
+            versionSelect.className = "visible-block";
+            mode = "block";
+        } else {
+            versionSelect.className = "hidden";
+            mode = "none";
+        }
     };
 
     versionSelect.onchange = () => {
