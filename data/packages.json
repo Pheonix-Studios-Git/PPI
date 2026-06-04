@@ -2,8 +2,8 @@
   "packages": [
     {
       "name": "PAC",
-      "version": "0.1.0",
-      "status": "beta",
+      "version": "1.0.0",
+      "status": "stable",
       "git_url": "https://github.com/AkshuDev/PAC",
       "dependencies": [],
       "os": [
@@ -18,7 +18,7 @@
       "readme": "README.md",
       "install": "nfx install PAC",
       "zipfile": "PAC/nfx_zip/PAC.zip",
-      "update": "2026-05-29 00:28",
+      "update": "2026-06-04 23:36",
       "signed_zipfile": "PAC/nfx_zip/PAC.zip.sig",
       "versioning_enabled": false,
       "versions": [
@@ -106,5 +106,5 @@
       "latest_version": ""
     }
   ],
-  "modified": "2026-05-29 00:30"
+  "modified": "2026-06-04 23:53"
 }
