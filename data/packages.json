@@ -2,7 +2,7 @@
   "packages": [
     {
       "name": "PAC",
-      "version": "1.0.0",
+      "version": "1.0.1",
       "status": "stable",
       "git_url": "https://github.com/AkshuDev/PAC",
       "dependencies": [],
@@ -17,14 +17,15 @@
       "author": "Pheonix Studios (AkshuDev)",
       "readme": "README.md",
       "install": "nfx install PAC",
-      "zipfile": "PAC/nfx_zip/PAC.zip",
-      "update": "2026-06-04 23:36",
+      "zipfile": "PAC/nfx_zip/PAC_v%.zip",
+      "update": "2026-06-28 00:32",
       "signed_zipfile": "PAC/nfx_zip/PAC.zip.sig",
-      "versioning_enabled": false,
+      "versioning_enabled": true,
       "versions": [
-        ""
+        "1.0.0",
+        "1.0.1"
       ],
-      "latest_version": ""
+      "latest_version": "1.0.1"
     },
     {
       "name": "NFX",
@@ -106,5 +107,5 @@
       "latest_version": ""
     }
   ],
-  "modified": "2026-06-04 23:53"
+  "modified": "2026-06-28 00:32"
 }
