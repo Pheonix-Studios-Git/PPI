@@ -17,9 +17,9 @@
       "author": "Pheonix Studios (AkshuDev)",
       "readme": "README.md",
       "install": "nfx install PAC",
-      "zipfile": "PAC/nfx_zip/PAC_v%.zip",
+      "zipfile": "PAC/nfx_zip/PAC-v%.zip",
       "update": "2026-06-28 00:32",
-      "signed_zipfile": "PAC/nfx_zip/PAC.zip.sig",
+      "signed_zipfile": "PAC/nfx_zip/PAC-v%.zip.sig",
       "versioning_enabled": true,
       "versions": [
         "1.0.0",
