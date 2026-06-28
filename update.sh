@@ -66,10 +66,10 @@ update_package() {
 for update in "${UPDATES[@]}"; do
   case "$update" in
     PAC)
-      update_package "PAC" "data/PAC/nfx_zip/PAC.zip"
+      update_package "PAC" "data/PAC/nfx_zip/PAC-v1.0.2.zip"
       ;;
     NFX)
-      update_package "NFX" "data/NFX/nfx_zip/NFX-v1.0.1.zip"
+      update_package "NFX" "data/NFX/nfx_zip/NFX-v1.0.2.zip"
       ;;
     PDASM)
       update_package "PDASM" "data/PDASM/nfx_zip/PDASM.zip"
