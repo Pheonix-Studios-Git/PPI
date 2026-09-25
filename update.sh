@@ -13,13 +13,13 @@ UPDATES=()
 # --update=PAC --update=PDASM
 for arg in "$@"; do
   case $arg in
-    --update=*)
-      UPDATES+=("${arg#*=}")
-      ;;
-    *)
-      echo "Unknown argument: $arg"
-      exit 1
-      ;;
+  --update=*)
+    UPDATES+=("${arg#*=}")
+    ;;
+  *)
+    echo "Unknown argument: $arg"
+    exit 1
+    ;;
   esac
 done
 
@@ -34,7 +34,7 @@ if [ ${#UPDATES[@]} -eq 0 ]; then
     --arg modified "$DATE" \
     '.modified = $modified')
 
-  echo "$TMP_JSON" > data/packages.tmp.json
+  echo "$TMP_JSON" >data/packages.tmp.json
 
   echo "packages edit done!"
 
@@ -65,22 +65,22 @@ update_package() {
 # Process requested updates
 for update in "${UPDATES[@]}"; do
   case "$update" in
-    PAC)
-      update_package "PAC" "data/PAC/nfx_zip/PAC-v1.0.2.zip"
-      ;;
-    NFX)
-      update_package "NFX" "data/NFX/nfx_zip/NFX-v1.0.2.zip"
-      ;;
-    PDASM)
-      update_package "PDASM" "data/PDASM/nfx_zip/PDASM.zip"
-      ;;
-    PHEONIX|Pheonix-Engine)
-      update_package "Pheonix-Engine" "data/Pheonix-Engine/nfx_zip/Pheonix-Engine.zip"
-      ;;
-    *)
-      echo "Unknown update target: $update"
-      exit 1
-      ;;
+  PAC)
+    update_package "PAC" "data/PAC/nfx_zip/PAC-v1.0.3.zip"
+    ;;
+  NFX)
+    update_package "NFX" "data/NFX/nfx_zip/NFX-v1.0.2.zip"
+    ;;
+  PDASM)
+    update_package "PDASM" "data/PDASM/nfx_zip/PDASM.zip"
+    ;;
+  PHEONIX | Pheonix-Engine)
+    update_package "Pheonix-Engine" "data/Pheonix-Engine/nfx_zip/Pheonix-Engine.zip"
+    ;;
+  *)
+    echo "Unknown update target: $update"
+    exit 1
+    ;;
   esac
 done
 
@@ -88,7 +88,7 @@ TMP_JSON=$(echo "$TMP_JSON" | jq \
   --arg modified "$DATE" \
   '.modified = $modified')
 
-echo "$TMP_JSON" > data/packages.tmp.json
+echo "$TMP_JSON" >data/packages.tmp.json
 
 echo "packages edit done!"
 

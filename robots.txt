@@ -2,5 +2,6 @@ User-agent: *
 Allow: /
 Disallow: /pkgpage
 Disallow: /data
+Disallow: /important
 
 Sitemap: https://pheonix-studios-git.github.io/PPI/sitemap.xml
