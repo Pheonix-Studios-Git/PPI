@@ -2,7 +2,7 @@
   "packages": [
     {
       "name": "PAC",
-      "version": "1.0.3",
+      "version": "1.0.4",
       "status": "stable",
       "git_url": "https://github.com/AkshuDev/PAC",
       "dependencies": [],
@@ -29,7 +29,7 @@
     },
     {
       "name": "NFX",
-      "version": "1.0.2",
+      "version": "1.0.3",
       "status": "stable",
       "git_url": "https://github.com/Pheonix-Studios-Git/NFX",
       "dependencies": [],
