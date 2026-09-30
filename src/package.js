@@ -6,7 +6,67 @@ const packages_loc = urlParams.get('data_loc');
 let packages_gv = [];
 const zipCache = {};
 
+let markdownHistory = [];
+
+function normalizeZipPath(zipPath) {
+    if (!zipPath || typeof zipPath !== "string") return null;
+
+    let path = zipPath.replace(/\\/g, "/"); // use forward slashes only
+    if (path.startsWith("/") || /^[A-Za-z]:\//.test(path)) return null;
+
+    const parts = path.split("/");
+    const normalized = [];
+
+    for (const part of parts) {
+        if (!part || part == '.') continue;
+
+        if (part == '..') {
+            if (normalized.length === 0) return null; // Trying to exit Zipfile
+
+            normalized.pop();
+            continue;
+        }
+
+        normalized.push(part);
+    }
+
+    return normalized.join("/");
+}
+
+function resolveMarkdownPath(basePath, requestedPath) {
+    if (!basePath || typeof basePath !== "string") return null;
+    if (!requestedPath || typeof requestedPath !== "string") return null;
+
+    if (
+        requestedPath.startsWith("http://") ||
+        requestedPath.startsWith("https://") ||
+        requestedPath.startsWith("//") ||
+        requestedPath.startsWith("#") ||
+        requestedPath.startsWith("mailto:")
+    ) return null; // Ignore URL, only care about files
+
+    let rpath = requestedPath.split("#")[0].split("?")[0];
+    const baseParts = basePath.split("/");
+    baseParts.pop(); // Remove current .md filename.
+
+    const combined = [...baseParts, ...rpath.split("/")].join("/");
+    return normalizeZipPath(combined);
+}
+
+async function loadMarkdownFromZip(zipPath, markdownPath) {
+    const safePath = normalizeZipPath(markdownPath);
+    if (!safePath) throw new Error(`Dangerous/Invalid path found in Zipfile: ${markdownPath}`);
+
+    const zip = await getZip(zipPath);
+    const file = zip.file(safePath);
+
+    if (!file) throw new Error(`Could not find ${safePath} in Zipfile`);
+    return await file.async("string");
+}
+
 async function getZip(zipPath) {
+    if (!zipPath || typeof zipPath !== "string") return null;
+
     if (zipCache[zipPath]) return zipCache[zipPath];
 
     const res = await fetch(zipPath);
@@ -31,6 +91,7 @@ async function loadPackages() {
         } else {
             try {
                 const zip = await getZip(`../../data/${resolveFile(package_object)}`);
+                if (!zip) return null;
                 console.log(zip);
 
                 const readmeFile = zip.file(package_object.readme || "README.md");
@@ -41,17 +102,51 @@ async function loadPackages() {
                     package_object.readmeContent = await readmeFile.async("string");
                 }
             } catch (err) {
-                console.error(`Failed to load ZIP for ${package_object.name}:`, err);
+                console.error(`Failed to load Zipfile for ${package_object.name}:`, err);
                 package_object.readmeContent = "README not available.";
             }
         }
 
         packages_gv = packages.packages;
 
-        renderPackage(package_object);
+        await renderPackage(package_object);
     } catch (err) {
         console.error('Failed to load packages.json:', err);
     }
+}
+
+async function renderMarkdownFromZip(container, zipPath, markdownPath, markdown) {
+    container.innerHTML = DOMPurify.sanitize(marked.parse(markdown));
+    hljs.highlightAll();
+
+    // Handle file links in md
+    container.querySelectorAll("a[href]").forEach(link => {
+        const href = link.getAttribute("href");
+        if (!href) return;
+
+        const resolvedPath = resolveMarkdownPath(markdownPath, href);
+        if (!resolvedPath) return;
+        if (!resolvedPath.toLowerCase().endsWith(".md")) return;
+
+		link.classList.add("markdown-file-link");
+        link.addEventListener("click", async event => {
+            event.preventDefault();
+
+            try {
+				markdownHistory.push(markdownPath);
+				const backButton = document.getElementById("markdown-back");
+				if (backButton) { backButton.disabled = markdownHistory.length === 0; }
+
+                const newMarkdown = await loadMarkdownFromZip(zipPath, resolvedPath);
+                await renderMarkdownFromZip(container, zipPath, resolvedPath, newMarkdown);
+            } catch (err) {
+				markdownHistory.pop();
+
+                console.error("Failed to load Markdown:", err);
+                alert(`Could not find ${resolvedPath} in the package Zipfile`);
+            }
+        });
+    });
 }
 
 function resolveVersion(pkg, requestedVersion = null) {
@@ -79,7 +174,7 @@ function resolveFile(pkg, reqVer = null) {
 }
 
 // Render package page
-function renderPackage(pkg) {
+async function renderPackage(pkg) {
     const container = document.getElementById('package-main');
 
     // Build dependencies as vertical tabbed list
@@ -160,13 +255,19 @@ function renderPackage(pkg) {
                 <button class="install-btn">Install Directly</button>
             </a>
         </div>
-        <hr>
+
+		<div class="markdown-navigation">
+			<button id="markdown-back" type="button" disabled>
+				&larr; Back
+			</button>
+		</div>
         <div id="readme-content"></div>
     `);
 
     const versionLabel = document.getElementById("version-label");
     const versionSelect = document.getElementById("version-select");
     const installLink = document.getElementById("install-link");
+	const markdownBack = document.getElementById("markdown-back");
 
     let currentVersion = pkg.version;
 
@@ -207,10 +308,27 @@ function renderPackage(pkg) {
         installLink.href = `../../data/${resolvedFile}`;
     };
 
-    // Render README markdown
-    document.getElementById('readme-content').innerHTML = DOMPurify.sanitize(marked.parse(pkg.readmeContent));
+	markdownBack.addEventListener("click", async (event) => {
+		if (markdownHistory.length === 0) return;
 
-    hljs.highlightAll();
+		try {
+    		const lastMdPath = normalizeZipPath(markdownHistory.pop());
+
+			const oldMarkdown = await loadMarkdownFromZip(zipPath, lastMdPath);
+			await renderMarkdownFromZip(readmeContainer, zipPath, lastMdPath, oldMarkdown, false);
+
+			markdownBack.disabled = markdownHistory.length === 0;
+		} catch (err) {
+			console.log("Failed to go back in Markdown history:", err);
+		}
+	});
+
+    // Render README markdown
+    const readmeContainer = document.getElementById("readme-content");
+    const zipPath = `../../data/${resolveFile(pkg)}`;
+    const readmePath = normalizeZipPath(pkg.readme || "README.md");
+
+    await renderMarkdownFromZip(readmeContainer, zipPath, readmePath, pkg.readmeContent);
 }
 
 document.querySelector('#search-bar').addEventListener("keydown", async (event) => {
@@ -218,6 +336,10 @@ document.querySelector('#search-bar').addEventListener("keydown", async (event) 
         const q = document.querySelector('#search-bar').value.trim();
         if (q) {
             const res_obj = packages_gv.find(obj => obj.name === q);
+            if (!res_obj) {
+                alert(`Package [${q}] does not exist, hence no info found!`);
+                return;
+            }
 
             if (res_obj.readme === "") {
                 res_obj.readmeContent = "README not available.";
@@ -233,18 +355,17 @@ document.querySelector('#search-bar').addEventListener("keydown", async (event) 
                         res_obj.readmeContent = await readmeFile.async("string");
                     }
                 } catch (err) {
-                    console.error(`Failed to load ZIP for ${res_obj.name}:`, err);
+                    console.error(`Failed to load Zipfile for ${res_obj.name}:`, err);
                     res_obj.readmeContent = "README not available.";
                 }
             }
             if (res_obj) {
-                renderPackage(res_obj);
+                await renderPackage(res_obj);
             } else {
                 alert(`Package [${q}] does not exist, hence no info found!`);
             }
         }
     }
 });
-
 
 loadPackages();

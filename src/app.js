@@ -43,3 +43,4 @@ document.querySelector('#search-bar').addEventListener("keydown", (event) => {
 
 // Initialize
 loadPackages();
+

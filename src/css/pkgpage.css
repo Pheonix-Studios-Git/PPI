@@ -144,3 +144,43 @@ a {
 #hidden {
     display: none;
 }
+
+.markdown-navigation {
+	display: flex;
+  	justify-content: flex-start;
+}
+
+#markdown-back {
+	background-color: var(--secondary-color);
+	color: var(--text-color);
+	font-size: 1.12rem;
+	
+	border-radius: 10px;
+	border-width: 0px;
+
+	padding-top: 3px;
+	padding-left: 5px;
+	padding-right: 5px;
+	padding-bottom: 3px;
+
+	margin-right: auto;
+	cursor: pointer;
+
+	transition: transform ease-in-out 0.2s;
+}
+
+#markdown-back:disabled {
+	color: grey;
+}
+
+#markdown-back:not(:disabled):hover {
+	transform: scale(1.1);
+}
+
+.markdown-file-link {
+    text-decoration: underline;
+    text-decoration-style: dotted;
+    text-underline-offset: 3px;
+    cursor: pointer;
+    font-weight: 500;
+}
