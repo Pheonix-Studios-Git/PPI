@@ -18,7 +18,7 @@
       "readme": "README.md",
       "install": "nfx install PAC",
       "zipfile": "PAC/nfx_zip/PAC-v%.zip",
-      "update": "2026-10-05 01:15",
+      "update": "2026-10-05 22:58",
       "signed_zipfile": "PAC/nfx_zip/PAC-v%.zip.sig",
       "versioning_enabled": true,
       "versions": [
@@ -107,5 +107,5 @@
       "latest_version": ""
     }
   ],
-  "modified": "2026-10-05 01:17"
+  "modified": "2026-10-05 22:59"
 }
