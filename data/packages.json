@@ -45,7 +45,7 @@
       "readme": "README.md",
       "install": "nfx install NFX",
       "zipfile": "NFX/nfx_zip/NFX-v%.zip",
-      "update": "2026-10-01 01:07",
+      "update": "2026-10-05 23:03",
       "signed_zipfile": "NFX/nfx_zip/NFX-v%.zip.sig",
       "versioning_enabled": true,
       "versions": [
@@ -107,5 +107,5 @@
       "latest_version": ""
     }
   ],
-  "modified": "2026-10-05 22:59"
+  "modified": "2026-10-05 23:17"
 }
